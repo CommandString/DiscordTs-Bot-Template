@@ -97,3 +97,37 @@ Invoke the `listen` method on the event (preferably on `index.mts`)
 
 ClientReady.listen()
 ```
+
+# Slash Commands
+
+## Creating Commands
+
+1. Copy `src/Commands/Example.mts` to `src/Commands/NameOfCommand.mts`
+2. Configure command (change the `config` property)
+3. Replace current code in the `handle` method
+
+## Registering Commands
+
+I created the `CommandQueue` class **(still a WIP)** that will register commands for you and detect if the command needs re-registered if the configuration has changed.
+
+### NOTE: You must add all commands into the queue **BEFORE** the `ClientReady` event is emitted. This will change in the future but isn''t a high priority at the moment
+
+```ts
+// index.mts
+
+import Example from "./Commands/Example.mjs"
+
+new CommandQueue().addToQueueArray([
+    new Example
+])
+```
+
+## Deleting commands
+
+### To Be Documented
+
+# Development
+
+1. `npm i`
+2. Open on terminal and `tsc --watch` inside the root directory
+3. Open another terminal and `node index.mjs` in the build directory that
