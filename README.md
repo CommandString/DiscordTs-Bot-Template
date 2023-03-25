@@ -42,7 +42,7 @@ export default class Env {
 Second, add `NEW_VAR` to `.env` *(you should also add it to .env.example)*
 
 ```ini
-# ./env
+# .env
 
 TOKEN=CHANGE_ME
 NEW_VAR=CHANGE_ME
