@@ -1,11 +1,12 @@
 import Logger from "./Logger.mjs"
 import { config } from "dotenv"
 import { Client } from 'discord.js'
+import chalk from "chalk"
 
 export default class Env {
     private static initialized = false
     public static TOKEN: string
-    public static LOGGER_PREFIX: string
+    public static LOGGER_PREFIX: string = chalk.bgRed("NOT SET")
     public static client: Client
 
     public static init(): void
@@ -17,7 +18,7 @@ export default class Env {
 
         this.initialized = true
 
-        Logger.debug(`Loading .env`)
+        Logger.info("Starting Bot")
 
         let res = config({
             path: "../.env"
