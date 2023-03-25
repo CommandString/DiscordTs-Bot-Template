@@ -1,6 +1,6 @@
-import chalk from "chalk";
-import { exit } from "process";
-import Env from "./Env.mjs";
+import chalk from "chalk"
+import { exit } from "process"
+import Env from "./Env.mjs"
 
 export default class Logger {
     public static readonly ERROR_TYPE = chalk.redBright("ERROR")
@@ -10,7 +10,7 @@ export default class Logger {
     public static readonly WARNING_TYPE = chalk.yellow("WARNING")
 
     public static breakLine() {
-        console.log("");
+        console.log("")
     }
 
     public static info(message: string) {
@@ -18,7 +18,7 @@ export default class Logger {
     }
 
     public static debug(message: string) {
-        return this.log(message, this.DEBUG_TYPE);
+        return this.log(message, this.DEBUG_TYPE)
     }
 
     public static error(message: string) {
@@ -36,11 +36,25 @@ export default class Logger {
     }
 
     public static dumpArray(array: Array<any>) {
-        return this.debug(array.join(", "));
+        return this.debug(array.join(", "))
     }
 
     public static log(message: string, type: string = "DEFAULT") {
         console.log(`[${Env.LOGGER_PREFIX}] [${type}]: ${message}`)
         return this
+    }
+
+    public static errorCatchPromiseException()
+    {
+        return (e: string) => {
+            this.error(e)
+        }
+    }
+
+    public static criticalCatchPromiseException()
+    {
+        return (e: string) => {
+            this.critical(e)
+        }
     }
 }
