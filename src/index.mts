@@ -1,21 +1,23 @@
 import Env from "./Core/Env.mjs"
 import chalk from 'chalk'
-import Ping from "./Commands/Ping.mjs"
-import { Client, GatewayIntentBits as Intents, Events } from 'discord.js'
-import Logger from "./Core/Logger.mjs"
+import { Client, GatewayIntentBits as Intents } from 'discord.js'
+import ClientReady from "./Events/ClientReady.mjs"
+import CommandQueue from "./Commands/CommandQueue.mjs"
+import Status from "./Commands/Status.mjs"
+import { getDefaultIntents } from "./Core/Helpers.mjs"
 
-Env.LOGGER_PREFIX = chalk.red("NOT READY")
+Env.LOGGER_PREFIX = chalk.blue("TS-BOT")
 Env.init()
 
 Env.client = new Client({
-    intents: Intents.Guilds,
+    intents: getDefaultIntents()
 })
 
-Env.client.once(Events.ClientReady, (c) => {
-    Env.LOGGER_PREFIX = c.user.username.toUpperCase()
-    Logger.info(`Logged in as ${c.user.tag}!`)
+// EVENTS
+ClientReady.listen()
 
-    Env.client.channels.cache.get("1070684220021801000")?.send("test")
-})
+new CommandQueue().addToQueueArray([
+    new Status
+])
 
 Env.client.login(Env.TOKEN)
