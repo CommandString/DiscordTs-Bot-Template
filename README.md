@@ -156,8 +156,6 @@ export default class extends AbstractCommand {
 
 I created the `CommandQueue` class **(still a WIP)** that will register commands for you and detect if the command needs re-registered if the configuration has changed.
 
-### NOTE: You must add all commands into the queue **BEFORE** the `ClientReady` event is emitted. This will change in the future but isn''t a high priority at the moment
-
 ```ts
 // index.mts
 
@@ -165,7 +163,7 @@ import Example from "./Commands/Example.mjs"
 
 new CommandQueue().addToQueueArray([
     new Example
-])
+]).checkQueue()
 ```
 
 ## Deleting commands
