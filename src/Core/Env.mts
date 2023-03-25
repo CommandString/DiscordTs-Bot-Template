@@ -4,8 +4,8 @@ import { Client } from 'discord.js'
 import chalk from "chalk"
 
 export default class Env {
-    private static initialized = false
     public static TOKEN: string
+    private static initialized = false
     public static LOGGER_PREFIX: string = chalk.bgRed("NOT SET")
     public static client: Client
 
