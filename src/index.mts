@@ -18,6 +18,6 @@ ClientReady.listen()
 
 new CommandQueue().addToQueueArray([
     new Status
-])
+]).checkQueue()
 
 Env.client.login(Env.TOKEN)
