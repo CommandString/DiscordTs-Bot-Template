@@ -50,12 +50,12 @@ NEW_VAR=CHANGE_ME
 
 ## Adding Additional Environment Variables at Runtime
 
-Add typings like in [Adding Additional Environment Variables](#adding-additional-environment-variables)
+1. Add typings like in [Adding Additional Environment Variables](#adding-additional-environment-variables)
 
-Define the property..
+2. Define the property somewhere in the script
 
 ```ts
-Env.NEW_VAR = "some-cool-value"
+Env.NEW_VAR = "CHANGE_ME"
 ```
 
 # Events
