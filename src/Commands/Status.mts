@@ -23,7 +23,7 @@ export default class extends AbstractCommand {
                     .addFields(
                         {
                             name: "Memory Usage",
-                            value: `${Math.round((mem.heapUsed / 1e+6) * 100) / 100} MB`
+                            value: `${Math.round((mem.heapUsed / 1e+4)) / 1e+2} MB`
                         },
                         {
                             name: "Guild Count",
