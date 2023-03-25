@@ -1,5 +1,5 @@
 import chalk from "chalk"
-import { ApplicationCommand, Client, Events, Routes, TextBasedChannel } from "discord.js"
+import { Client, Events } from "discord.js"
 import Logger from "../Core/Logger.mjs"
 import AbstractEvent from "./AbstractEvent.mjs"
 
