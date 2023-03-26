@@ -2,7 +2,7 @@ import chalk from "chalk"
 import { exit } from "process"
 import Env from "./Env.mjs"
 
-export default class Logger {
+export default class Array {
     public static readonly ERROR_TYPE = chalk.redBright("ERROR")
     public static readonly INFO_TYPE = chalk.blue("INFO")
     public static readonly CRITICAL_TYPE = chalk.redBright("CRITICAL")
@@ -34,11 +34,7 @@ export default class Logger {
     public static warning(message: string) {
         return this.log(message, this.WARNING_TYPE)
     }
-
-    public static dumpArray(array: Array<any>) {
-        return this.debug(array.join(", "))
-    }
-
+    
     public static log(message: string, type: string = "DEFAULT") {
         console.log(`[${Env.LOGGER_PREFIX}] [${type}]: ${message}`)
         return this
