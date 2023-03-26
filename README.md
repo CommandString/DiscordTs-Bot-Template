@@ -166,9 +166,14 @@ new CommandQueue().addToQueueArray([
 ]).checkQueue()
 ```
 
-## Deleting commands
+# Deleting commands
 
-### To Be Documented
+## Delete By Name
+```ts
+import { deleteSlashCommandByName } from "./Core/Helpers.mjs"
+
+deleteSlashCommandByName("commandName")
+```
 
 # Development
 
