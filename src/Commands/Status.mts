@@ -32,7 +32,7 @@ export default class extends AbstractCommand {
                         },
                         {
                             name: "Uptime",
-                            value: `<t:${Env.client.readyTimestamp! - ((new Date().getTime() / 1000) - Env.client.readyTimestamp!)}:R>` 
+                            value: `<t:${Math.round((Env.client.readyAt?.getTime()! - (new Date().getTime() - Env.client.readyAt?.getTime()!)) / 1000)}:R>`
                         }
                     )
             ],
