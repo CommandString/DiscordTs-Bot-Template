@@ -25,6 +25,7 @@ export default class CommandQueue {
                         CommandQueue.log("Bot is ready clearing interval")
                         clearInterval(interval)
                     } else {
+                        CommandQueue.log("Bot is not ready, will retry to check the queue in 1 second");
                         return;
                     }
 
