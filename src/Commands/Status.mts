@@ -1,3 +1,4 @@
+import { time } from "console"
 import { SlashCommandBuilder, CommandInteraction, EmbedBuilder, MessageFlags } from "discord.js"
 import { memoryUsage } from "process"
 import Env from "../Core/Env.mjs"
@@ -6,7 +7,7 @@ import AbstractCommand from "./AbstractCommand.mjs"
 export default class extends AbstractCommand {
     protected config = new SlashCommandBuilder()
         .setName("status")
-        .setDescription("Get status of the bot")
+        .setDescription("Check bot status")
     
 
     public handle(CommandInteraction: CommandInteraction): void
@@ -28,12 +29,12 @@ export default class extends AbstractCommand {
                         {
                             name: "Guild Count",
                             value: `${Env.client.guilds.cache.size}`
+                        },
+                        {
+                            name: "Uptime",
+                            value: `<t:${Env.client.readyTimestamp! - ((new Date().getTime() / 1000) - Env.client.readyTimestamp!)}:R>` 
                         }
                     )
-                    .setFooter({
-                        text: `Started`
-                    })
-                    .setTimestamp(Env.client.readyTimestamp)
             ],
             flags: MessageFlags.Ephemeral
         })
