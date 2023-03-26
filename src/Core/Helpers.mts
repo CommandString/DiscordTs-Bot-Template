@@ -25,7 +25,6 @@ export function getDefaultIntents(): number
 export async function deleteSlashCommandByName(name: string) {
     if (!Env.client.isReady()) {
         setTimeout(() => deleteSlashCommandByName(name), 1000)
-        Logger.debug("Bot is not ready, will retry deleting command in 1 second")
         return
     }
     

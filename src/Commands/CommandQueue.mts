@@ -22,10 +22,8 @@ export default class CommandQueue {
             if (!this.intervalCreated) {
                 let interval = setInterval(() => {
                     if (Env.client.isReady()) {
-                        CommandQueue.log("Bot is ready clearing interval")
                         clearInterval(interval)
                     } else {
-                        CommandQueue.log("Bot is not ready, will retry to check the queue in 1 second");
                         return;
                     }
 
@@ -34,8 +32,6 @@ export default class CommandQueue {
 
                 this.intervalCreated = true
             }
-
-            CommandQueue.log("Bot is not ready, will retry to check the queue in 1 second");
 
             return
         }
@@ -73,10 +69,8 @@ export default class CommandQueue {
             let registeredCommand = getCommandByName(queuedCommand.getConfig().name)
 
             if (registeredCommand === null || !queuedCommand.matchesApplicationCommand(registeredCommand)) {
-                CommandQueue.log(`${queuedCommand.getConfig().name} needs registered`)
+                CommandQueue.log(`${CommandQueue.textColor(queuedCommand.getConfig().name)} needs registered`)
                 registerCommand = true
-            } else {
-                CommandQueue.log(`${queuedCommand.getConfig().name} does not need registered`)
             }
 
             if (registerCommand) {
@@ -97,7 +91,7 @@ export default class CommandQueue {
                     body: commandToRegister
                 }
             ).then(() => {
-                CommandQueue.log(`${commandToRegister?.name} was registered successfully!`)
+                CommandQueue.log(`${CommandQueue.textColor(commandToRegister?.name!)} was registered successfully!`)
             }).catch(Logger.errorCatchPromiseException())
         }
 
