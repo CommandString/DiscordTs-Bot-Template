@@ -178,6 +178,6 @@ deleteSlashCommandByName("commandName")
 
 # Development
 
-1. `yarn install`
+1. `npm install`
 2. Open on terminal and `tsc --watch` inside the root directory
 3. Open another terminal and `node index.mjs` in the build directory that
