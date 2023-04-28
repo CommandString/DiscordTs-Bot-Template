@@ -35,8 +35,9 @@ First, you have to add typings for it
 // src/Core/Env.mts
 
 export default class Env {
-    public static TOKEN: string
-    public static NEW_VAR: string
+	public static TOKEN: string
+	public static NEW_VAR: string
+}
 ```
 
 Second, add `NEW_VAR` to `.env` *(you should also add it to .env.example)*
@@ -44,8 +45,8 @@ Second, add `NEW_VAR` to `.env` *(you should also add it to .env.example)*
 ```ini
 # .env
 
-TOKEN=CHANGE_ME
-NEW_VAR=CHANGE_ME
+TOKEN = CHANGE_ME
+NEW_VAR = CHANGE_ME
 ```
 
 ## Adding Additional Environment Variables at Runtime
@@ -109,8 +110,8 @@ ClientReady.listen()
 After doing that you should have something like this
 
 ```ts
-import { SlashCommandBuilder, CommandInteraction, EmbedBuilder, MessageFlags } from "discord.js"
-import { memoryUsage } from "process"
+import {SlashCommandBuilder, CommandInteraction, EmbedBuilder, MessageFlags} from "discord.js"
+import {memoryUsage} from "process"
 import Env from "../Core/Env.mjs"
 import AbstractCommand from "./AbstractCommand.mjs"
 
@@ -118,10 +119,9 @@ export default class extends AbstractCommand {
     protected config = new SlashCommandBuilder()
         .setName("status")
         .setDescription("Get status of the bot")
-    
 
-    public handle(CommandInteraction: CommandInteraction): void
-    {
+
+    public handle(CommandInteraction: CommandInteraction): void {
         let mem = memoryUsage()
 
         CommandInteraction.reply({
@@ -169,8 +169,9 @@ new CommandQueue().addToQueueArray([
 # Deleting commands
 
 ## Delete By Name
+
 ```ts
-import { deleteSlashCommandByName } from "./Core/Helpers.mjs"
+import {deleteSlashCommandByName} from "./Core/Helpers.mjs"
 
 deleteSlashCommandByName("commandName")
 ```

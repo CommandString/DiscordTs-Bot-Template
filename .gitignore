@@ -1,4 +1,10 @@
 .env*
+!.env.example
+
 build/
 node_modules
-!.env.example
+
+.idea
+.yarn
+
+.eslintcache
